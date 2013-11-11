@@ -1,0 +1,10 @@
+int a = 5;
+a = a + 7;
+System.out.println("hello world");
+
+Human guy = new Human();
+guy.setName("Lettuce");
+System.out.println(guy.getName());
+guy.getName();
+int q = guy.getAge() + 7;
+System.out.println(q);
