@@ -4,26 +4,29 @@ public class Human {
 	
 	// some fields
 	private String name; // give your human a name
-	private int age;
+	private int maxBooks;
 	
 	// constructor
 	public Human () {
 		name = "unkown name";
-		age = 7;
+		maxBooks = 7;
 	}
 	
 	// methods
 	public String getName() {
 		return name;
 	}
-	public int getAge() {
-		return age;
+	public int getMaxBooks() {
+		return maxBooks;
 	}
 	public void setName(String anyName) {
 		this.name = anyName;
 	}
-	public void setAge(int anyAge) {
-		this.age = anyAge;
+	public void setMaxBooks(int anyMaxBooks) {
+		this.maxBooks = anyMaxBooks;
+	}
+	public String toString() {
+		return this.getName() + " (" + this.getMaxBooks() + " books)";
 	}
 	
 	// main

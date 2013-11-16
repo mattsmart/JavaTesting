@@ -8,3 +8,4 @@ System.out.println(guy.getName());
 guy.getName();
 int q = guy.getAge() + 7;
 System.out.println(q);
+guy.toString();
