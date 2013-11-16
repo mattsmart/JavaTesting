@@ -13,8 +13,23 @@ public class BookTest {
 		assertEquals("unkown author", b1.author);
 	}
 	
-	/*@Test
-	public void test() {
-		fail("Not yet implemented");
-	}*/
+	@Test
+	public void testGetPerson() {
+		Book b2 = new Book("War and Peace");
+		
+		// create a new human to hold the book
+		Human h2 = new Human();
+		h2.setName("Frank");
+		
+		// method to say book is loaned to human
+		b2.setHuman(h2);
+		
+		// get the name of the human who has book
+		Human testHuman = b2.getHuman();
+		String testName = testHuman.getName();
+		//String testName = b2.getHuman().getName();
+		
+		assertEquals("Frank",testName);
+	}
+	
 }
