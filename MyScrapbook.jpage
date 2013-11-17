@@ -1,11 +1,17 @@
-int a = 5;
-a = a + 7;
-System.out.println("hello world");
+ArrayList<Book> lst = new ArrayList<Book>();
 
-Human guy = new Human();
-guy.setName("Lettuce");
-System.out.println(guy.getName());
-guy.getName();
-int q = guy.getAge() + 7;
-System.out.println(q);
-guy.toString();
+Book b1 = new Book("Great Expectations");
+Book b2 = new Book("War and Peace");
+
+Human h1 = new Human();
+h1.setName("Fred");
+b1.setHuman(h1);
+
+lst.add(b1);
+lst.add(b2);
+
+
+//lst.get(0).getHuman().getName()
+//lst.indexOf(b2)
+lst.remove(b1)
+lst
