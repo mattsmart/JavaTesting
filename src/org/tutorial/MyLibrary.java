@@ -41,5 +41,43 @@ public class MyLibrary {
 	public void removeHuman(Human human) {
 		this.humans.remove(human);
 	}
+
+	public boolean checkOut(Book b1, Human h1) {
+		// TODO Auto-generated method stub
+		int booksOut = this.getBooksForHuman(h1).size();
+		
+		if ((b1.getHuman() == null) &&
+				(booksOut < h1.getMaxBooks())) {
+			b1.setHuman(h1);
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+
+	public boolean checkIn(Book b1) {
+		// TODO Auto-generated method stub
+		if (b1.getHuman() != null) {
+			b1.setHuman(null);
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+
+	public ArrayList<Book> getBooksForHuman(Human h1) {
+		ArrayList<Book> result = new ArrayList<Book>();
+		for (Book aBook : this.getBooks()) {
+			if ((aBook.getHuman() != null) && 
+					(aBook.getHuman().getName()
+							.equals(h1.getName())))
+			{
+				result.add(aBook);
+			}
+		}
+		return result;
+	}
 	
 }

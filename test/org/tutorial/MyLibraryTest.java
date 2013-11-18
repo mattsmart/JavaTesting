@@ -35,8 +35,16 @@ public class MyLibraryTest {
 		
 		ml = new MyLibrary("Test");
 	}
+
+	private void addItems() {
+		ml.addBook(b1);
+		ml.addBook(b2);
+		ml.addHuman(h1);
+		ml.addHuman(h2);
+	}
 	
 	@Test
+	// test add and remove methods
 	public void testAddBook() {
 		// create test objects
 		setup();
@@ -72,9 +80,52 @@ public class MyLibraryTest {
 		
 		ml.removeHuman(h2);
 		assertEquals(0, ml.getHumans().size());	
-		
 	}
 	
+	@Test
+	// test checkout related methods
+	public void testCheckOut() {
+		// setup objects
+		setup();
+		
+		ml.addBook(b1);
+		ml.addBook(b2);
+		ml.addHuman(h1);
+		ml.addHuman(h1);
+		
+		assertTrue("Book did not check out correctly",
+				ml.checkOut(b1,h1));
+		assertEquals("Fred", b1.getHuman().getName());
+		assertFalse("Book was already checked out", ml.checkOut(b1,h2));
+		assertTrue("Book check in failed", ml.checkIn(b1));
+		assertFalse("Book was already checked in", ml.checkIn(b1));
+		assertFalse("Book was never checked out", ml.checkIn(b2));
+		
+		// additional test for max books field
+		setup();
+		h1.setMaxBooks(1);
+		addItems();
+		
+		assertTrue("First book did not check out", ml.checkOut(b2, h1));
+		assertFalse("Second book should not have checked out", ml.checkOut(b1, h1));
+	}
 	
+	@Test
+	// test getBooksForHuman method
+	public void testGetBooksForHuman() {
+		setup();
+		addItems();
+		assertEquals(0, ml.getBooksForHuman(h1).size());
+		
+		ml.checkOut(b1, h1);
+		ArrayList<Book> testBooks = ml.getBooksForHuman(h1);
+		assertEquals(1, testBooks.size());
+		assertEquals(0, testBooks.indexOf(b1));
+		
+		ml.checkOut(b2, h1);
+		testBooks = ml.getBooksForHuman(h1);
+		assertEquals(2, testBooks.size());
+		assertEquals(1, testBooks.indexOf(b2));
+	}
 	
 }

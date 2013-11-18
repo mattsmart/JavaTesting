@@ -4,7 +4,7 @@ public class Human {
 	
 	// some fields
 	private String name; // give your human a name
-	private int maxBooks;
+	private int maxBooks; // most books a person can check out
 	
 	// constructor
 	public Human () {
