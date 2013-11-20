@@ -106,4 +106,46 @@ public class MyLibrary {
 			this.getHumans().size() + " humans.";
 	}
 	
+	public static void main(String[] args) {
+		// create a new MyLibrary
+		MyLibrary testLibrary = new MyLibrary("Test Run Library");
+		Book b1 = new Book("War and Peace");
+		Book b2 = new Book("Great Expectations");
+		b1.setAuthor("Tolstoy");
+		b2.setAuthor("Dickens");
+		Human jim = new Human();
+		Human sue = new Human();
+		jim.setName("Jim");
+		sue.setName("Sue");
+		testLibrary.addBook(b1);
+		testLibrary.addBook(b2);
+		testLibrary.addHuman(jim);
+		testLibrary.addHuman(sue);
+		
+		System.out.println("Just created a new library"); // SHORTCUT - highlight text, ctrl space, up arrow
+		testLibrary.printStatus();
+		
+		System.out.println("Check out War and Peace to Sue");
+		testLibrary.checkOut(b1, sue);
+		testLibrary.printStatus();
+		
+		System.out.println("Do some other stuff");
+		testLibrary.checkIn(b1);
+		testLibrary.checkOut(b2, jim);
+		testLibrary.printStatus();	
+	}
+	
+	public void printStatus() {
+		System.out.println("Status Report of MyLibrary \n" + this.toString());
+		for (Book thisBook : this.getBooks()) {
+			System.out.println(thisBook);
+		}
+		for (Human thisHuman : this.getHumans()) {
+			int count = this.getBooksForHuman(thisHuman).size();
+			System.out.println(thisHuman + " (has " + count + " of my books)");
+		}
+		System.out.println("Books Avaliable: " + this.getAvailableBooks().size());
+		System.out.println("--- End of Status Report ---");
+	}
+	
 }
