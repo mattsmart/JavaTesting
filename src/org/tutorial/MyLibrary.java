@@ -79,5 +79,31 @@ public class MyLibrary {
 		}
 		return result;
 	}
+
+	public ArrayList<Book> getAvailableBooks() {
+		ArrayList<Book> availBooks = new ArrayList<Book>();
+		for (Book aBook : this.getBooks()) {
+			if (aBook.getHuman() == null) {
+				availBooks.add(aBook);
+			}
+		}
+		return availBooks;
+	}
+
+	public ArrayList<Book> getUnavailableBooks() {
+		ArrayList<Book> unavailBooks = new ArrayList<Book>();
+		for (Book aBook : this.getBooks()) {
+			if (aBook.getHuman() != null) {
+				unavailBooks.add(aBook);
+			}
+		}
+		return unavailBooks;
+	}
+
+	public String toString() {
+		return this.getName() + ": " + 
+			this.getBooks().size() + " books; " +
+			this.getHumans().size() + " humans.";
+	}
 	
 }

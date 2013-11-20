@@ -32,4 +32,18 @@ public class BookTest {
 		assertEquals("Frank",testName);
 	}
 	
+	@Test
+	public void testToString() {
+		Book b2 = new Book("War and Peace");
+		Human h2 = new Human();
+		h2.setName("Frank");
+		
+		assertEquals("War and Peace by unkown author; Available",
+				b2.toString());
+		
+		b2.setHuman(h2);
+		assertEquals("War and Peace by unkown author; Checked out to Frank",
+				b2.toString());
+	}
+	
 }

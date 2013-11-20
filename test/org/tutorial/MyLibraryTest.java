@@ -128,4 +128,50 @@ public class MyLibraryTest {
 		assertEquals(1, testBooks.indexOf(b2));
 	}
 	
+	@Test
+	public void testGetAvailableBooks() {
+		setup();
+		addItems();
+		ArrayList<Book> testBooks = ml.getAvailableBooks();
+		
+		assertEquals(2, testBooks.size());
+		assertEquals(1, testBooks.indexOf(b2));
+		
+		ml.checkOut(b1, h1);
+		testBooks = ml.getAvailableBooks();
+		assertEquals(1, testBooks.size());
+		assertEquals(0, testBooks.indexOf(b2));
+		
+		ml.checkOut(b2, h1);
+		testBooks = ml.getAvailableBooks();
+		assertEquals(0, testBooks.size());
+	}
+	
+	@Test
+	public void testGetUnavailableBooks() {
+		setup();
+		addItems();
+		assertEquals(0, ml.getUnavailableBooks().size());
+		
+		ml.checkOut(b1, h1);
+		
+		ArrayList<Book> testBooks = ml.getUnavailableBooks();
+		assertEquals(1, testBooks.size());
+		assertEquals(0, testBooks.indexOf(b1));
+		
+		ml.checkOut(b2, h2);
+		testBooks = ml.getUnavailableBooks();
+		assertEquals(2, testBooks.size());
+		assertEquals(1, testBooks.indexOf(b2));
+	}
+	
+	@Test
+	public void testToString() {
+		setup();
+		addItems();
+		assertEquals("Test: 2 books; 2 humans.",
+				ml.toString());
+	}
+	
+	
 }

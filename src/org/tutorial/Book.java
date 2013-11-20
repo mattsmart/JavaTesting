@@ -28,13 +28,24 @@ public class Book {
 	}
 
 	public void setHuman(Human h2) {
-		// TODO Auto-generated method stub
 		this.human = h2;
 	}
 
 	public Human getHuman() {
-		// TODO Auto-generated method stub
 		return this.human;
 	}
-
+	
+	public String toString() {
+		String available;
+		if (this.getHuman() == null) {
+			available = "Available";
+		}
+		else {
+			available = "Checked out to " +
+					this.getHuman().getName();	
+		}
+		return this.getTitle() + " by " + this.getAuthor() + 
+				"; " + available;
+	}
+	
 }
