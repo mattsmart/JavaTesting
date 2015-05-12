@@ -201,7 +201,7 @@ sdist/
 develop-eggs/
 .installed.cfg
 
-# Installer logs
+# Installer log
 pip-log.txt
 
 # Unit test / coverage reports
